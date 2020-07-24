@@ -2,6 +2,7 @@
 using leave_managment.Contracts;
 using leave_managment.Data;
 using leave_managment.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 
 namespace leave_managment.Controllers
 {
+    [Authorize(Roles ="Administrator")]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository _repo;
@@ -75,7 +77,6 @@ namespace leave_managment.Controllers
                 return View();
             }
         }
-
         // GET: LeaveTypes/Edit/5
         public ActionResult Edit(int id)
         {
